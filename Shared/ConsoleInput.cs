@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Console_sSnake.shared
+namespace RaggaTanks.shared
 {
     public class ConsoleInput
     {

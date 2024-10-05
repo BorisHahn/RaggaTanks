@@ -1,6 +1,7 @@
 ﻿using RaggaTanks.interfaces;
+using RaggaTanks.shared;
 
-namespace Console_sSnake.shared
+namespace RaggaTanks.shared
 {
     public abstract class BaseGameLogic: IArrowListener
     {
