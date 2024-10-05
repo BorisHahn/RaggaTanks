@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.11.35312.102
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RaggaTanks", "RaggaTanks.csproj", "{55D237E2-0F9A-41CA-AD7B-5C6B4F686566}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{55D237E2-0F9A-41CA-AD7B-5C6B4F686566}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{55D237E2-0F9A-41CA-AD7B-5C6B4F686566}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{55D237E2-0F9A-41CA-AD7B-5C6B4F686566}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{55D237E2-0F9A-41CA-AD7B-5C6B4F686566}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {CB81F3D7-CB4E-4345-81F3-259418C8CAB8}
+	EndGlobalSection
+EndGlobal
