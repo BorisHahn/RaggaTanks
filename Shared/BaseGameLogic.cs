@@ -36,6 +36,7 @@ namespace RaggaTanks.shared
             ScreenWidth = renderer.Width;
 
             CurrentState?.Update(deltaTime);
+
             CurrentState?.Draw(renderer);
 
             Update(deltaTime);

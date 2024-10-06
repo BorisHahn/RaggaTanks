@@ -34,6 +34,7 @@ namespace RaggaTanks.Tanks
                 return;
             }
             gameplayState.SetDirection(TankDir.Up);
+            gameplayState.MoveByDirection();
         }
 
         public override void OnArrowDown()
@@ -43,6 +44,7 @@ namespace RaggaTanks.Tanks
                 return;
             }
             gameplayState.SetDirection(TankDir.Down);
+            gameplayState.MoveByDirection();
         }
 
         public override void OnArrowLeft()
@@ -52,6 +54,7 @@ namespace RaggaTanks.Tanks
                 return;
             }
             gameplayState.SetDirection(TankDir.Left);
+            gameplayState.MoveByDirection();
         }
 
         public override void OnArrowRight()
@@ -61,6 +64,7 @@ namespace RaggaTanks.Tanks
                 return;
             }   
             gameplayState.SetDirection(TankDir.Right);
+            gameplayState.MoveByDirection();
         }
 
         public void GotoGameplay()

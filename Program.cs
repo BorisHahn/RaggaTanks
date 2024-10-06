@@ -7,6 +7,7 @@ namespace RaggaTanks
     internal class Program
     {
         const float targetFrameTime = 1f / 60f;
+
         static void Main()
         {
             MapGenerator mapGenerator = new MapGenerator();
@@ -49,5 +50,5 @@ namespace RaggaTanks
                 }
             }
         }
+        }
     }
-}
