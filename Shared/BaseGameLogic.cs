@@ -16,6 +16,7 @@ namespace RaggaTanks.shared
         public abstract void OnArrowRight();
 
         public abstract void OnArrowUp();
+        public abstract void OnPressSpace();
         public abstract ConsoleColor[] CreatePallet();
 
         public void InitializeInput(ConsoleInput consoleInput)

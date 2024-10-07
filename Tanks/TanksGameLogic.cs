@@ -67,6 +67,18 @@ namespace RaggaTanks.Tanks
             gameplayState.MoveByDirection();
         }
 
+        public override void OnPressSpace()
+        {
+            if (CurrentState != gameplayState)
+            {
+                return;
+            }
+            var currTankPos = gameplayState.TankPosition;
+            var currTankDir = gameplayState.CurrentDir;
+            TankShell tankShell = new(currTankDir, currTankPos);
+            gameplayState.TankShell = tankShell;
+        }
+
         public void GotoGameplay()
         {
             gameplayState.level = currentLevel;

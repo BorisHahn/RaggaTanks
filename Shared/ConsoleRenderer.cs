@@ -48,6 +48,7 @@ namespace RaggaTanks.shared
 
         public void SetPixel(int w, int h, char val, byte colorIdx)
         {
+            if ((w > Width || w < 0) || (h > Height || h < 0)) return;
             _pixels[w, h] = val;
             _pixelColors[w, h] = colorIdx;
         }
@@ -55,7 +56,7 @@ namespace RaggaTanks.shared
 
         public void Render()
         {
-            Console.Clear();
+            //Console.Clear();
             Console.BackgroundColor = BgColor;
 
             for (var w = 0; w < Width; w++)

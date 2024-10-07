@@ -16,15 +16,18 @@ namespace RaggaTanks.Tanks
     }
     public class TanksGameplayState : BaseGameState
     {
-        private TankDir currentDir = TankDir.Left;
-        private Cell tankPosition = new(4, 4);
+        private TankDir _currentDir = TankDir.Left;
+        private Cell _tankPosition = new(4, 4);
+        private TankShell? _tankShell = null;
         
         private string[] _currentMap;
 
         private static MapGenerator _mapGenerator;
         
         private float _timeToMove = 0f;
-
+        public TankShell TankShell { set { _tankShell = value; } }
+        public TankDir CurrentDir => _currentDir;
+        public Cell TankPosition => _tankPosition;
         public int fieldWidth { get; set; }
         public int fieldHeight { get; set; }
 
@@ -39,13 +42,13 @@ namespace RaggaTanks.Tanks
         }
         public void SetDirection(TankDir dir)
         {
-            currentDir = dir;
+            _currentDir = dir;
         }
 
         public void MoveByDirection()
         {
-            var newPosition = ShiftTo(tankPosition, currentDir);
-            tankPosition = newPosition;
+            var newPosition = ShiftTo(_tankPosition, _currentDir);
+            _tankPosition = newPosition;
         }
 
         private Cell ShiftTo(Cell curCell, TankDir dir)
@@ -67,7 +70,7 @@ namespace RaggaTanks.Tanks
         {
             var middleY = fieldHeight / 2;
             var middleX = fieldWidth / 2;
-            currentDir = TankDir.Left;
+            _currentDir = TankDir.Left;
             _timeToMove = 0f;
             
             gameOver = false;
@@ -80,7 +83,12 @@ namespace RaggaTanks.Tanks
             if (_timeToMove > 0f || gameOver)
                 return;
 
-            _timeToMove = 1f / 4;
+            _timeToMove = 1f / 10;
+
+            if (_tankShell != null)
+            {
+                _tankShell.Update(deltaTime);
+            }
         }
 
         public override void Draw(ConsoleRenderer renderer)
@@ -107,15 +115,18 @@ namespace RaggaTanks.Tanks
                 }
             }
 
-            var tankModel = TankRenderView.GetRenderViewByDirection(currentDir);
+            var tankModel = TankRenderView.GetRenderViewByDirection(_currentDir);
             for (int ty = 0; ty < 2; ty++)
             {
                 for (int tx = 0; tx < 4; tx++)
                 {
-                    renderer.SetPixel(tx + tankPosition.X, ty + tankPosition.Y, tankModel[ty,tx], 2);
+                    renderer.SetPixel(tx + _tankPosition.X, ty + _tankPosition.Y, tankModel[ty,tx], 2);
                 }
             }
-            //renderer.SetPixel();
+            if (_tankShell != null)
+            {
+                renderer.SetPixel(_tankShell.Body.X, _tankShell.Body.Y, _tankShell.CircleSymbol, 2);
+            }
         }
 
         public override bool IsDone()

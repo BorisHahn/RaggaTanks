@@ -37,6 +37,9 @@ namespace RaggaTanks.shared
                     case ConsoleKey.RightArrow or ConsoleKey.D:
                         foreach (var aL in arrowListeners) aL.OnArrowRight();
                         break;
+                    case ConsoleKey.Spacebar or ConsoleKey.Enter:
+                        foreach (var aL in arrowListeners) aL.OnPressSpace();
+                        break;
                 }
             }
         }
