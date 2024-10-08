@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RaggaTanks.map;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,11 +13,13 @@ namespace RaggaTanks.Tanks
         const char circleSymbol = 'o';
         private Cell _body;
         private TankDir _currentShellDir;
-
+        private TanksGameplayState _state;
+        private int _index;
+        public int Index {  get { return _index; } }
         public char CircleSymbol => circleSymbol;
         public Cell Body => _body;
 
-        public TankShell(TankDir currentTankDirection, Cell currentTankPosition)
+        public TankShell(TankDir currentTankDirection, Cell currentTankPosition, TanksGameplayState state, int index)
         {
             _currentShellDir = currentTankDirection;
             switch (currentTankDirection)
@@ -34,6 +37,8 @@ namespace RaggaTanks.Tanks
                     _body = new(currentTankPosition.X, currentTankPosition.Y + 2);
                     break;
             }
+            _state = state;
+            _index = index;
         }
 
         private Cell ShiftTo(Cell curCell, TankDir dir)
@@ -55,8 +60,16 @@ namespace RaggaTanks.Tanks
         public void Update(float dt)
         {
             var nextCell = ShiftTo(_body, _currentShellDir);
+            MapGenerator mapGenerator = new MapGenerator();
 
-            _body = nextCell;
+            var mapValueByNextCell = mapGenerator.GetCurrentCharByCoords(nextCell.X, nextCell.Y, $"level{_state.Level}");
+            if (mapValueByNextCell == ' ')
+            {
+                _body = nextCell;
+            } else
+            {
+                _state.RemoveTankShellFromList(this);
+            }
         }
     }
 }

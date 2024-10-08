@@ -43,5 +43,12 @@ namespace RaggaTanks.map
                 _mapsCollection.Add(mapKey, mapValue);
             }
         }
+
+        public char GetCurrentCharByCoords(int x, int y, string currLevel)
+        {
+            string[] curMap = GetCurrentLevelMap(currLevel);
+            var test = curMap[y][x];
+            return curMap[y][x];
+        }
     }
 }

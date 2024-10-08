@@ -73,15 +73,17 @@ namespace RaggaTanks.Tanks
             {
                 return;
             }
+            Random rnd = new Random();
+            int index = rnd.Next(100);
             var currTankPos = gameplayState.TankPosition;
             var currTankDir = gameplayState.CurrentDir;
-            TankShell tankShell = new(currTankDir, currTankPos);
-            gameplayState.TankShell = tankShell;
+            TankShell tankShell = new(currTankDir, currTankPos, gameplayState, index);
+            gameplayState.AddTankShellToList(tankShell);
         }
 
         public void GotoGameplay()
         {
-            gameplayState.level = currentLevel;
+            gameplayState.Level = currentLevel;
             gameplayState.fieldWidth = ScreenWidth;
             gameplayState.fieldHeight = ScreenHeight;
             ChangeState(gameplayState);
