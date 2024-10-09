@@ -20,7 +20,7 @@ namespace RaggaTanks.Tanks
         private Cell _tankPosition = new(4, 4);
         private List<TankShell> _tankShell = new();
         public List<TankShell> ListTankShell {  get { return _tankShell; } }
-        private string[] _currentMap;
+        public string[] currentMap;
 
         public static MapGenerator _mapGenerator;
         
@@ -40,7 +40,7 @@ namespace RaggaTanks.Tanks
         public TanksGameplayState(MapGenerator mapGenerator)
         {
             _mapGenerator = mapGenerator;
-            _currentMap = mapGenerator.GetCurrentLevelMap($"level{_level}");
+            currentMap = mapGenerator.GetCurrentLevelMap($"level{_level}");
         }
         public void SetDirection(TankDir dir)
         {
@@ -108,24 +108,18 @@ namespace RaggaTanks.Tanks
         }
 
         public override void Draw(ConsoleRenderer renderer)
-        {
-            string[] currentMap = _mapGenerator.GetCurrentLevelMap($"level{_level - 1}");
-
+        {        
             for (int y = 0; y < Math.Min(currentMap.Length, renderer.Height); y++)
             {
                 for (int x = 0; x < Math.Min(currentMap[0].Length, renderer.Width); x++)
                 {
-
-                   
-
                     if (currentMap[y][x] == '▓')
-
                     {
                         renderer.SetPixel(x, y, currentMap[y][x], 0);
                     }
                     else if (currentMap[y][x] == '░')
                     {
-                        renderer.SetPixel(x, y, currentMap[y][x], 2);
+                        renderer.SetPixel(x, y, currentMap[y][x], 0);
                     }
                     else
                     {

@@ -47,8 +47,12 @@ namespace RaggaTanks.map
         public char GetCurrentCharByCoords(int x, int y, string currLevel)
         {
             string[] curMap = GetCurrentLevelMap(currLevel);
-            var test = curMap[y][x];
             return curMap[y][x];
         }
+
+        /*public void ReplaceViewMapSection(int x, int y, )
+        {
+
+        }*/
     }
 }

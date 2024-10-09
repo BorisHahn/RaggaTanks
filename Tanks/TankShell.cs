@@ -66,7 +66,15 @@ namespace RaggaTanks.Tanks
             if (mapValueByNextCell == ' ')
             {
                 _body = nextCell;
-            } else
+            }
+            else if (mapValueByNextCell == '▓')
+            {
+                _state.currentMap[nextCell.Y] = _state.currentMap[nextCell.Y].Remove(nextCell.X, 1).Insert(nextCell.X, "░");
+                _state.currentMap[nextCell.Y] = _state.currentMap[nextCell.Y].Remove(nextCell.X + 1, 1).Insert(nextCell.X + 1, "░");
+                _state.currentMap[nextCell.Y] = _state.currentMap[nextCell.Y].Remove(nextCell.X + 2, 1).Insert(nextCell.X + 2, "░");
+                _state.currentMap[nextCell.Y] = _state.currentMap[nextCell.Y].Remove(nextCell.X + 3, 1).Insert(nextCell.X + 3, "░");
+            }
+            else
             {
                 _state.RemoveTankShellFromList(this);
             }
