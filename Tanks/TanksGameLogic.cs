@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using RaggaTanks.map;
 using RaggaTanks.shared;
+using static RaggaTanks.Tanks.TanksGameplayState;
 
 namespace RaggaTanks.Tanks
 {
@@ -12,12 +13,13 @@ namespace RaggaTanks.Tanks
     {
         private TanksGameplayState gameplayState;
         private bool newGamePending = false;
-        private int currentLevel = 1;
+        private int currentLevel = 0;
         private ShowTextState showTextState = new(2f);
         
         public TanksGameLogic(MapGenerator mapGenerator)
         {
             gameplayState = new TanksGameplayState(mapGenerator);
+            gameplayState.AddPlayerTankToGameState(new Tank(gameplayState, new Cell(4, 4), true));
         }
         private void GotoNextLevel()
         {
@@ -33,8 +35,8 @@ namespace RaggaTanks.Tanks
             {
                 return;
             }
-            gameplayState.SetDirection(TankDir.Up);
-            gameplayState.MoveByDirection();
+            gameplayState.PlayerTank.SetDirection(TankDir.Up);
+            gameplayState.PlayerTank.MoveByDirection();
         }
 
         public override void OnArrowDown()
@@ -43,8 +45,8 @@ namespace RaggaTanks.Tanks
             {
                 return;
             }
-            gameplayState.SetDirection(TankDir.Down);
-            gameplayState.MoveByDirection();
+            gameplayState.PlayerTank.SetDirection(TankDir.Down);
+            gameplayState.PlayerTank.MoveByDirection();
         }
 
         public override void OnArrowLeft()
@@ -53,8 +55,8 @@ namespace RaggaTanks.Tanks
             {
                 return;
             }
-            gameplayState.SetDirection(TankDir.Left);
-            gameplayState.MoveByDirection();
+            gameplayState.PlayerTank.SetDirection(TankDir.Left);
+            gameplayState.PlayerTank.MoveByDirection();
         }
 
         public override void OnArrowRight()
@@ -63,8 +65,8 @@ namespace RaggaTanks.Tanks
             {
                 return;
             }   
-            gameplayState.SetDirection(TankDir.Right);
-            gameplayState.MoveByDirection();
+            gameplayState.PlayerTank.SetDirection(TankDir.Right);
+            gameplayState.PlayerTank.MoveByDirection();
         }
 
         public override void OnPressSpace()
@@ -75,10 +77,10 @@ namespace RaggaTanks.Tanks
             }
             Random rnd = new Random();
             int index = rnd.Next(100);
-            var currTankPos = gameplayState.TankPosition;
-            var currTankDir = gameplayState.CurrentDir;
+            var currTankPos = gameplayState.PlayerTank.TankPosition;
+            var currTankDir = gameplayState.PlayerTank.CurrentDir;
             TankShell tankShell = new(currTankDir, currTankPos, gameplayState, index);
-            gameplayState.AddTankShellToList(tankShell);
+            gameplayState.PlayerTank.AddTankShellToList(tankShell);
         }
 
         public void GotoGameplay()

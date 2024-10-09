@@ -49,10 +49,5 @@ namespace RaggaTanks.map
             string[] curMap = GetCurrentLevelMap(currLevel);
             return curMap[y][x];
         }
-
-        /*public void ReplaceViewMapSection(int x, int y, )
-        {
-
-        }*/
     }
 }

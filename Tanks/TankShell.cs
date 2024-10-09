@@ -62,21 +62,43 @@ namespace RaggaTanks.Tanks
             var nextCell = ShiftTo(_body, _currentShellDir);
             MapGenerator mapGenerator = new MapGenerator();
 
-            var mapValueByNextCell = mapGenerator.GetCurrentCharByCoords(nextCell.X, nextCell.Y, $"level{_state.Level}");
-            if (mapValueByNextCell == ' ')
+            //var mapValueByNextCell = mapGenerator.GetCurrentCharByCoords(nextCell.X, nextCell.Y, $"level{_state.Level}");
+            var mapValueByNextCell = _state.currentMap[nextCell.Y][nextCell.X];
+            var test = mapValueByNextCell;
+            if (mapValueByNextCell == ' ' || mapValueByNextCell == '█')
             {
                 _body = nextCell;
             }
             else if (mapValueByNextCell == '▓')
             {
-                _state.currentMap[nextCell.Y] = _state.currentMap[nextCell.Y].Remove(nextCell.X, 1).Insert(nextCell.X, "░");
-                _state.currentMap[nextCell.Y] = _state.currentMap[nextCell.Y].Remove(nextCell.X + 1, 1).Insert(nextCell.X + 1, "░");
-                _state.currentMap[nextCell.Y] = _state.currentMap[nextCell.Y].Remove(nextCell.X + 2, 1).Insert(nextCell.X + 2, "░");
-                _state.currentMap[nextCell.Y] = _state.currentMap[nextCell.Y].Remove(nextCell.X + 3, 1).Insert(nextCell.X + 3, "░");
+                if (_currentShellDir == TankDir.Right || _currentShellDir == TankDir.Down || _currentShellDir == TankDir.Up)
+                {
+                    _state.currentMap[nextCell.Y] = _state.currentMap[nextCell.Y].Remove(nextCell.X, 1).Insert(nextCell.X, "░");
+                    _state.currentMap[nextCell.Y] = _state.currentMap[nextCell.Y].Remove(nextCell.X + 1, 1).Insert(nextCell.X + 1, "░");
+                } else if (_currentShellDir == TankDir.Left)
+                {
+                    _state.currentMap[nextCell.Y] = _state.currentMap[nextCell.Y].Remove(nextCell.X, 1).Insert(nextCell.X, "░");
+                    _state.currentMap[nextCell.Y] = _state.currentMap[nextCell.Y].Remove(nextCell.X - 1, 1).Insert(nextCell.X - 1, "░");
+                } 
+                _state.PlayerTank.RemoveTankShellFromList(this);
+            }
+            else if (mapValueByNextCell == '░')
+            {
+                if (_currentShellDir == TankDir.Right || _currentShellDir == TankDir.Down || _currentShellDir == TankDir.Up)
+                {
+                    _state.currentMap[nextCell.Y] = _state.currentMap[nextCell.Y].Remove(nextCell.X, 1).Insert(nextCell.X, " ");
+                    _state.currentMap[nextCell.Y] = _state.currentMap[nextCell.Y].Remove(nextCell.X + 1, 1).Insert(nextCell.X + 1, " ");
+                }
+                else if (_currentShellDir == TankDir.Left)
+                {
+                    _state.currentMap[nextCell.Y] = _state.currentMap[nextCell.Y].Remove(nextCell.X, 1).Insert(nextCell.X, " ");
+                    _state.currentMap[nextCell.Y] = _state.currentMap[nextCell.Y].Remove(nextCell.X - 1, 1).Insert(nextCell.X - 1, " ");
+                }               
+                _state.PlayerTank.RemoveTankShellFromList(this);
             }
             else
             {
-                _state.RemoveTankShellFromList(this);
+                _state.PlayerTank.RemoveTankShellFromList(this);
             }
         }
     }
