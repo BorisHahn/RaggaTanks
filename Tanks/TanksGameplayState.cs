@@ -1,12 +1,5 @@
 ﻿using RaggaTanks.map;
 using RaggaTanks.shared;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection.Emit;
-using System.Text;
-using System.Threading.Tasks;
-
 
 namespace RaggaTanks.Tanks
 {
@@ -47,6 +40,10 @@ namespace RaggaTanks.Tanks
             Enemies.Add(enemy);
         }
         
+        public void RemoveEnemyFromGameState(Tank enemy)
+        {
+            Enemies.Remove(enemy);
+        }
         public override void Reset()
         {
             var middleY = fieldHeight / 2;

@@ -1,9 +1,4 @@
 ﻿using RaggaTanks.shared;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using static RaggaTanks.Tanks.TanksGameplayState;
 
 namespace RaggaTanks.Tanks
@@ -11,6 +6,7 @@ namespace RaggaTanks.Tanks
     public class Tank
     {
         private TanksGameplayState _gameplayState;
+        private string _tankName;
         private Cell _tankPosition;
         public Cell TankPosition => _tankPosition;
         private List<TankShell> _tankShell = new();
@@ -18,13 +14,15 @@ namespace RaggaTanks.Tanks
         private TankDir _currentDir = TankDir.Left;
         public TankDir CurrentDir => _currentDir;
         private float _timeToMove = 0f;
-        private bool isPlayer;
+        public bool IsPlayer { get; private set; }
+        public int Health { get; private set; } = 250;
 
-        public Tank(TanksGameplayState gameplayState, Cell startPosition, bool isPlayer)
+        public Tank(TanksGameplayState gameplayState, Cell startPosition, bool isPlayer, string tankName)
         {
             _gameplayState = gameplayState;
-            this.isPlayer = isPlayer;
+            IsPlayer = isPlayer;
             _tankPosition = startPosition;
+            _tankName = tankName;
         }
 
         public void SetDirection(TankDir dir)
@@ -49,8 +47,28 @@ namespace RaggaTanks.Tanks
             var mapValueByNextCell = _gameplayState.currentMap[newPosition.Y][newPosition.X];
             if (mapValueByNextCell == ' ')
             {
-                _tankPosition = newPosition;
-            } else if (!isPlayer)
+                if (IsPlayer)
+                {
+                    var filteredCoords = _gameplayState.Enemies.Where((el) => el.TankPosition.X == newPosition.X && el.TankPosition.Y == newPosition.Y).ToList();
+                    if (filteredCoords.Count == 0)
+                    {
+                        _tankPosition = newPosition;
+                    }
+                }
+                else
+                {
+                    var newPotentialBotPosition = newPosition.X == _gameplayState.PlayerTank.TankPosition.X && newPosition.Y == _gameplayState.PlayerTank.TankPosition.Y;
+                    if (newPotentialBotPosition)
+                    {
+                        ChangeTankDirection();
+                    }
+                    else
+                    {
+                        _tankPosition = newPosition;
+                    }
+                }
+            }
+            else if (!IsPlayer)
             {
                 ChangeTankDirection();
             }
@@ -97,9 +115,9 @@ namespace RaggaTanks.Tanks
             if (_timeToMove > 0f || _gameplayState.gameOver)
                 return;
 
-            _timeToMove = isPlayer ? (1f / 10): 1f;
-
-            if (!isPlayer)
+            _timeToMove = IsPlayer ? (1f / 10): 1f;
+            
+            if (!IsPlayer)
             {
                 MoveByDirection();
             }
@@ -120,7 +138,7 @@ namespace RaggaTanks.Tanks
             {
                 for (int tx = 0; tx < 4; tx++)
                 {
-                    var tankColor = (byte)(isPlayer ? 4 : 2);
+                    var tankColor = (byte)(IsPlayer ? 4 : 2);
                     renderer.SetPixel(tx + _tankPosition.X, ty + _tankPosition.Y, tankModel[ty, tx], tankColor);
                 }
             }
@@ -129,6 +147,18 @@ namespace RaggaTanks.Tanks
                 foreach (var tankShell in _tankShell)
                 {
                     renderer.SetPixel(tankShell.Body.X, tankShell.Body.Y, tankShell.CircleSymbol, 2);
+                }
+            }
+        }
+
+        public void GetDamage(TankShell shell)
+        {
+            if (!_gameplayState.gameOver && Health > 0)
+            {
+                Health -= shell.Damage;
+                if (Health <= 0)
+                {
+                    _gameplayState.RemoveEnemyFromGameState(this);
                 }
             }
         }

@@ -1,9 +1,4 @@
 ﻿using RaggaTanks.map;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using static RaggaTanks.Tanks.TanksGameplayState;
 
 namespace RaggaTanks.Tanks
@@ -15,11 +10,13 @@ namespace RaggaTanks.Tanks
         private TankDir _currentShellDir;
         private TanksGameplayState _state;
         private int _index;
+        private Tank _tankOwner;
         public int Index {  get { return _index; } }
         public char CircleSymbol => circleSymbol;
         public Cell Body => _body;
+        public int Damage { get; private set; } = 50;
 
-        public TankShell(TankDir currentTankDirection, Cell currentTankPosition, TanksGameplayState state, int index)
+        public TankShell(TankDir currentTankDirection, Cell currentTankPosition, TanksGameplayState state, int index, Tank tankOwner)
         {
             _currentShellDir = currentTankDirection;
             switch (currentTankDirection)
@@ -39,6 +36,7 @@ namespace RaggaTanks.Tanks
             }
             _state = state;
             _index = index;
+            _tankOwner = tankOwner;
         }
 
         private Cell ShiftTo(Cell curCell, TankDir dir)
@@ -66,7 +64,16 @@ namespace RaggaTanks.Tanks
             var test = mapValueByNextCell;
             if (mapValueByNextCell == ' ' || mapValueByNextCell == '█')
             {
-                _body = nextCell;
+                var filteredCoords = _state.Enemies.Where((el) => el.TankPosition.X == nextCell.X && el.TankPosition.Y == nextCell.Y).ToList();
+                if (filteredCoords.Count > 0)
+                {
+                    CauseDamageToTank(filteredCoords);
+                    _state.PlayerTank.RemoveTankShellFromList(this);
+                }
+                else
+                {
+                    _body = nextCell;
+                }
             }
             else if (mapValueByNextCell == '▓')
             {
@@ -98,6 +105,14 @@ namespace RaggaTanks.Tanks
             else
             {
                 _state.PlayerTank.RemoveTankShellFromList(this);
+            }
+        }
+
+        private void CauseDamageToTank(List<Tank> filteredCoords)
+        {
+            if (_tankOwner.IsPlayer)
+            {
+               filteredCoords[0].GetDamage(this);
             }
         }
     }

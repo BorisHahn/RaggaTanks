@@ -19,8 +19,8 @@ namespace RaggaTanks.Tanks
         public TanksGameLogic(MapGenerator mapGenerator)
         {
             gameplayState = new TanksGameplayState(mapGenerator);
-            gameplayState.AddPlayerToGameState(new Tank(gameplayState, new Cell(4, 4), true));
-            gameplayState.AddEnemyToGameState(new Tank(gameplayState, new Cell(16, 10), false));
+            gameplayState.AddPlayerToGameState(new Tank(gameplayState, new Cell(4, 4), true, "Boris"));
+            gameplayState.AddEnemyToGameState(new Tank(gameplayState, new Cell(16, 10), false, "Chester"));
         }
         private void GotoNextLevel()
         {
@@ -80,7 +80,7 @@ namespace RaggaTanks.Tanks
             int index = rnd.Next(100);
             var currTankPos = gameplayState.PlayerTank.TankPosition;
             var currTankDir = gameplayState.PlayerTank.CurrentDir;
-            TankShell tankShell = new(currTankDir, currTankPos, gameplayState, index);
+            TankShell tankShell = new(currTankDir, currTankPos, gameplayState, index, gameplayState.PlayerTank);
             gameplayState.PlayerTank.AddTankShellToList(tankShell);
         }
 
