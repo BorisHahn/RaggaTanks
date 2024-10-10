@@ -46,12 +46,35 @@ namespace RaggaTanks.Tanks
         public void MoveByDirection()
         {
             var newPosition = ShiftTo(_tankPosition, _currentDir);
-            var mapValueByNextCell = _mapGenerator.GetCurrentCharByCoords(newPosition.X, newPosition.Y, $"level{_gameplayState.Level}");
+            var mapValueByNextCell = _gameplayState.currentMap[newPosition.Y][newPosition.X];
             if (mapValueByNextCell == ' ')
             {
                 _tankPosition = newPosition;
+            } else if (!isPlayer)
+            {
+                ChangeTankDirection();
             }
         }
+
+        private void ChangeTankDirection()
+        {
+            int currentIndexDirection = (int)CurrentDir;
+
+            var tankDirMemberCount = Enum.GetNames(typeof(TankDir)).Length - 1;
+            Random random = new Random();
+            var newIndex = random.Next(0, 3);
+            var tankDirValues = Enum.GetValues<TankDir>();
+            for (int i = 0; i < tankDirValues.Length; i++)
+            {
+                if (i == newIndex)
+                {
+                    var value = (TankDir)i;
+                    SetDirection(value);
+                    return;
+                }
+            }
+        }
+
         private Cell ShiftTo(Cell curCell, TankDir dir)
         {
             switch (dir)
@@ -74,8 +97,12 @@ namespace RaggaTanks.Tanks
             if (_timeToMove > 0f || _gameplayState.gameOver)
                 return;
 
-            _timeToMove = 1f / 10;
+            _timeToMove = isPlayer ? (1f / 10): 1f;
 
+            if (!isPlayer)
+            {
+                MoveByDirection();
+            }
             if (_tankShell.Count == 0) return;
             if (_tankShell.Count > 0)
             {
@@ -93,7 +120,8 @@ namespace RaggaTanks.Tanks
             {
                 for (int tx = 0; tx < 4; tx++)
                 {
-                    renderer.SetPixel(tx + _tankPosition.X, ty + _tankPosition.Y, tankModel[ty, tx], 2);
+                    var tankColor = (byte)(isPlayer ? 4 : 2);
+                    renderer.SetPixel(tx + _tankPosition.X, ty + _tankPosition.Y, tankModel[ty, tx], tankColor);
                 }
             }
             if (_tankShell.Count > 0)

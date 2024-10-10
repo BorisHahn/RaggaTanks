@@ -62,7 +62,6 @@ namespace RaggaTanks.Tanks
             var nextCell = ShiftTo(_body, _currentShellDir);
             MapGenerator mapGenerator = new MapGenerator();
 
-            //var mapValueByNextCell = mapGenerator.GetCurrentCharByCoords(nextCell.X, nextCell.Y, $"level{_state.Level}");
             var mapValueByNextCell = _state.currentMap[nextCell.Y][nextCell.X];
             var test = mapValueByNextCell;
             if (mapValueByNextCell == ' ' || mapValueByNextCell == '█')

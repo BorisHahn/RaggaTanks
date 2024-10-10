@@ -19,14 +19,15 @@ namespace RaggaTanks.Tanks
         public TanksGameLogic(MapGenerator mapGenerator)
         {
             gameplayState = new TanksGameplayState(mapGenerator);
-            gameplayState.AddPlayerTankToGameState(new Tank(gameplayState, new Cell(4, 4), true));
+            gameplayState.AddPlayerToGameState(new Tank(gameplayState, new Cell(4, 4), true));
+            gameplayState.AddEnemyToGameState(new Tank(gameplayState, new Cell(16, 10), false));
         }
         private void GotoNextLevel()
         {
             currentLevel++;
             newGamePending = false;
-            showTextState.Text = $"Level {currentLevel}";
             ChangeState(showTextState);
+            showTextState.Text = $"Level {currentLevel}";
         }
 
         public override void OnArrowUp()
@@ -98,7 +99,8 @@ namespace RaggaTanks.Tanks
                 ConsoleColor.Red, 
                 ConsoleColor.Black, 
                 ConsoleColor.Gray, 
-                ConsoleColor.Blue
+                ConsoleColor.Blue,
+                ConsoleColor.Green,
                 ];
         }
 
@@ -132,7 +134,6 @@ namespace RaggaTanks.Tanks
             {
                 GotoGameplay();
             }
-            
         }
     }
 }

@@ -12,12 +12,13 @@ namespace RaggaTanks.Tanks
 {
     public enum TankDir
     {
-        Up, Down, Left, Right
+        Up, Right, Down, Left
     }
     public class TanksGameplayState : BaseGameState
     {
-        private Tank? _playerTank;
-        public Tank PlayerTank {  get => _playerTank; }
+        public Tank PlayerTank { get; private set; }
+        public List<Tank> Enemies { get; set; } = [];
+        public int Level { get; set; } = 1;
        
         public string[] currentMap;
 
@@ -26,21 +27,24 @@ namespace RaggaTanks.Tanks
         public int fieldWidth { get; set; }
         public int fieldHeight { get; set; }
 
-        public bool gameOver;
+        public bool gameOver = false;
         public bool hasWon = false;
-        
-        public int Level { get => _level; set { _level = value; } }
-        private int _level = 1;
+
         
         public TanksGameplayState(MapGenerator mapGenerator)
         {
             _mapGenerator = mapGenerator;
-            currentMap = mapGenerator.GetCurrentLevelMap($"level{_level}");
+            currentMap = mapGenerator.GetCurrentLevelMap($"level{Level}");
         }
 
-        public void AddPlayerTankToGameState(Tank playerTank)
+        public void AddPlayerToGameState(Tank playerTank)
         {
-            _playerTank = playerTank;
+            PlayerTank = playerTank;
+        }
+
+        public void AddEnemyToGameState(Tank enemy)
+        {
+            Enemies.Add(enemy);
         }
         
         public override void Reset()
@@ -53,7 +57,12 @@ namespace RaggaTanks.Tanks
 
         public override void Update(float deltaTime)
         {
-            _playerTank.Update(deltaTime);
+            PlayerTank.Update(deltaTime);
+            foreach (var enemy in Enemies)
+            {
+                enemy.Update(deltaTime);
+            }
+
         }
 
         public override void Draw(ConsoleRenderer renderer)
@@ -76,7 +85,12 @@ namespace RaggaTanks.Tanks
                     }
                 }
             }
-            _playerTank.DrawTank(renderer);
+            PlayerTank.DrawTank(renderer);
+
+            foreach (var enemy in Enemies)
+            {
+                enemy.DrawTank(renderer);
+            }
         }
 
         public override bool IsDone()
