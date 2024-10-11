@@ -18,7 +18,7 @@ namespace RaggaTanks.Tanks
         
         public TanksGameLogic(MapGenerator mapGenerator)
         {
-            gameplayState = new TanksGameplayState(mapGenerator);
+            gameplayState = new TanksGameplayState(mapGenerator, showTextState);
             gameplayState.AddPlayerToGameState(new Tank(gameplayState, new Cell(4, 4), true, "Boris"));
             gameplayState.AddEnemyToGameState(new Tank(gameplayState, new Cell(16, 10), false, "Chester"));
         }
@@ -101,13 +101,14 @@ namespace RaggaTanks.Tanks
                 ConsoleColor.Gray, 
                 ConsoleColor.Blue,
                 ConsoleColor.Green,
+                ConsoleColor.DarkYellow,
+                ConsoleColor.Magenta,
                 ];
         }
 
         public void GoToGameOver()
         {
             currentLevel = 0;
-            newGamePending = true;
             showTextState.Text = $"Потрачено!";
             ChangeState(showTextState);
         }

@@ -16,7 +16,7 @@ namespace RaggaTanks.Tanks
         public string[] currentMap;
 
         public static MapGenerator _mapGenerator;
-        
+        private ShowTextState _showTextState;
         public int fieldWidth { get; set; }
         public int fieldHeight { get; set; }
 
@@ -24,10 +24,11 @@ namespace RaggaTanks.Tanks
         public bool hasWon = false;
 
         
-        public TanksGameplayState(MapGenerator mapGenerator)
+        public TanksGameplayState(MapGenerator mapGenerator, ShowTextState showTextState)
         {
             _mapGenerator = mapGenerator;
             currentMap = mapGenerator.GetCurrentLevelMap($"level{Level}");
+            _showTextState = showTextState;
         }
 
         public void AddPlayerToGameState(Tank playerTank)
@@ -54,12 +55,20 @@ namespace RaggaTanks.Tanks
 
         public override void Update(float deltaTime)
         {
+            CheckGameOver();
             PlayerTank.Update(deltaTime);
             foreach (var enemy in Enemies)
             {
                 enemy.Update(deltaTime);
             }
+        }
 
+        public void CheckGameOver()
+        {
+            if (Enemies.Count == 0)
+            {
+                gameOver = true;
+            }
         }
 
         public override void Draw(ConsoleRenderer renderer)
@@ -88,6 +97,14 @@ namespace RaggaTanks.Tanks
             {
                 enemy.DrawTank(renderer);
             }
+            ShowGameStateInfo(renderer);
+        }
+
+        public void ShowGameStateInfo(ConsoleRenderer renderer)
+        {
+            _showTextState.DrawText(renderer, 0, 60, ConsoleColor.Green, $"Player: {PlayerTank.Health}HP");
+            _showTextState.DrawText(renderer, 1, 60, ConsoleColor.DarkYellow, $"Level: {Level}");
+            _showTextState.DrawText(renderer, 2, 60, ConsoleColor.Magenta, $"Enemies: {Enemies.Count}");
         }
 
         public override bool IsDone()

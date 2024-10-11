@@ -26,6 +26,12 @@ namespace RaggaTanks.shared
             renderer.DrawString(Text, textX, textY, ConsoleColor.White);
         }
 
+        public void DrawText(ConsoleRenderer renderer, int textY, int textX, ConsoleColor color, string text)
+        {
+            var textHalfLength = Text.Length / 2;
+            renderer.DrawString(text, textX, textY, color);
+        }
+
         public override void Reset()
         {
             _timeLeft = _duration;

@@ -1,18 +1,19 @@
 ﻿using RaggaTanks.map;
+using RaggaTanks.shared;
 using static RaggaTanks.Tanks.TanksGameplayState;
 
 namespace RaggaTanks.Tanks
 {
     public class TankShell
     {
-        const char circleSymbol = 'o';
+        //const char circleSymbol = 'o';
         private Cell _body;
         private TankDir _currentShellDir;
         private TanksGameplayState _state;
         private int _index;
         private Tank _tankOwner;
         public int Index {  get { return _index; } }
-        public char CircleSymbol => circleSymbol;
+        //public char CircleSymbol => circleSymbol;
         public Cell Body => _body;
         public int Damage { get; private set; } = 50;
 
@@ -67,6 +68,7 @@ namespace RaggaTanks.Tanks
                 var filteredCoords = _state.Enemies.Where((el) => el.TankPosition.X == nextCell.X && el.TankPosition.Y == nextCell.Y).ToList();
                 if (filteredCoords.Count > 0)
                 {
+                    
                     CauseDamageToTank(filteredCoords);
                     _state.PlayerTank.RemoveTankShellFromList(this);
                 }
