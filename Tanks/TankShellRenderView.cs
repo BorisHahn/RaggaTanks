@@ -5,26 +5,26 @@ namespace RaggaTanks.Tanks
     {
         public static readonly char[,] Up = new char[,]
         {
-            { ' ', 'o'},
-            { ' ', ' '}
+            { ' ', ' ', ' ', ' '},
+            { ' ', 'o', ' ', ' '}
         };
 
         public static readonly char[,] Right = new char[,]
        {
-            { 'o' , ' '},
-            { ' ' , ' '}
+            { 'o', ' ', ' ', ' '},
+            { ' ', ' ', ' ', ' '}
        };
 
         public static readonly char[,] Down = new char[,]
        {
-            { ' ' , 'o'},
-            { ' ' , ' '}
+            { ' ', 'o', ' ', ' '},
+            { ' ', ' ', ' ', ' '}
        };
 
         public static readonly char[,] Left = new char[,]
        {
-            { 'o' , ' '},
-            { ' ' , ' '}
+            { ' ', ' ', ' ', 'o'},
+            { ' ', ' ', ' ', ' '}
        };
 
         public static char[,] GetRenderViewByDirection(TankDir direction)

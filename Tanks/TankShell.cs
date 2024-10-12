@@ -6,14 +6,14 @@ namespace RaggaTanks.Tanks
 {
     public class TankShell
     {
-        //const char circleSymbol = 'o';
+        const char circleSymbol = 'o';
         private Cell _body;
         private TankDir _currentShellDir;
         private TanksGameplayState _state;
         private int _index;
         private Tank _tankOwner;
         public int Index {  get { return _index; } }
-        //public char CircleSymbol => circleSymbol;
+        public char CircleSymbol => circleSymbol;
         public Cell Body => _body;
         public int Damage { get; private set; } = 50;
 
@@ -23,16 +23,16 @@ namespace RaggaTanks.Tanks
             switch (currentTankDirection)
             {
                 case TankDir.Left:
-                    _body = new(currentTankPosition.X - 4, currentTankPosition.Y);
+                    _body = new(currentTankPosition.X, currentTankPosition.Y);
                     break;
                 case TankDir.Right:
-                    _body = new(currentTankPosition.X + 4, currentTankPosition.Y);
+                    _body = new(currentTankPosition.X + 3, currentTankPosition.Y);
                     break;
                 case TankDir.Up:
-                    _body = new(currentTankPosition.X, currentTankPosition.Y - 2);
+                    _body = new(currentTankPosition.X, currentTankPosition.Y);
                     break;
                 case TankDir.Down:
-                    _body = new(currentTankPosition.X, currentTankPosition.Y + 2);
+                    _body = new(currentTankPosition.X, currentTankPosition.Y + 1);
                     break;
             }
             _state = state;
@@ -62,7 +62,7 @@ namespace RaggaTanks.Tanks
             MapGenerator mapGenerator = new MapGenerator();
 
             var mapValueByNextCell = _state.currentMap[nextCell.Y][nextCell.X];
-            var test = mapValueByNextCell;
+            
             if (mapValueByNextCell == ' ' || mapValueByNextCell == '█')
             {
                 var filteredCoords = _state.Enemies.Where((el) => el.TankPosition.X == nextCell.X && el.TankPosition.Y == nextCell.Y).ToList();
@@ -79,35 +79,30 @@ namespace RaggaTanks.Tanks
             }
             else if (mapValueByNextCell == '▓')
             {
-                if (_currentShellDir == TankDir.Right || _currentShellDir == TankDir.Down || _currentShellDir == TankDir.Up)
-                {
-                    _state.currentMap[nextCell.Y] = _state.currentMap[nextCell.Y].Remove(nextCell.X, 1).Insert(nextCell.X, "░");
-                    _state.currentMap[nextCell.Y] = _state.currentMap[nextCell.Y].Remove(nextCell.X + 1, 1).Insert(nextCell.X + 1, "░");
-                } else if (_currentShellDir == TankDir.Left)
-                {
-                    _state.currentMap[nextCell.Y] = _state.currentMap[nextCell.Y].Remove(nextCell.X, 1).Insert(nextCell.X, "░");
-                    _state.currentMap[nextCell.Y] = _state.currentMap[nextCell.Y].Remove(nextCell.X - 1, 1).Insert(nextCell.X - 1, "░");
-                } 
-                _state.PlayerTank.RemoveTankShellFromList(this);
+                EditWall("░", nextCell);
             }
             else if (mapValueByNextCell == '░')
             {
-                if (_currentShellDir == TankDir.Right || _currentShellDir == TankDir.Down || _currentShellDir == TankDir.Up)
-                {
-                    _state.currentMap[nextCell.Y] = _state.currentMap[nextCell.Y].Remove(nextCell.X, 1).Insert(nextCell.X, " ");
-                    _state.currentMap[nextCell.Y] = _state.currentMap[nextCell.Y].Remove(nextCell.X + 1, 1).Insert(nextCell.X + 1, " ");
-                }
-                else if (_currentShellDir == TankDir.Left)
-                {
-                    _state.currentMap[nextCell.Y] = _state.currentMap[nextCell.Y].Remove(nextCell.X, 1).Insert(nextCell.X, " ");
-                    _state.currentMap[nextCell.Y] = _state.currentMap[nextCell.Y].Remove(nextCell.X - 1, 1).Insert(nextCell.X - 1, " ");
-                }               
-                _state.PlayerTank.RemoveTankShellFromList(this);
+                EditWall(" ", nextCell);                
             }
             else
             {
                 _state.PlayerTank.RemoveTankShellFromList(this);
             }
+        }
+
+        public void EditWall(string value, Cell nextCell)
+        {            
+            for (var y = 0; y < 2; y++)
+            {
+                for (var x = 0; x < 4; x++)
+                {
+                    var nextY = _currentShellDir == TankDir.Up ? nextCell.Y - y : nextCell.Y + y;
+                    var nextX = _currentShellDir == TankDir.Left ? nextCell.X - x : nextCell.X + x;
+                    _state.currentMap[nextY] = _state.currentMap[nextY].Remove(nextX, 1).Insert(nextX, value);
+                }
+            }                                
+            _state.PlayerTank.RemoveTankShellFromList(this);
         }
 
         private void CauseDamageToTank(List<Tank> filteredCoords)

@@ -145,12 +145,11 @@ namespace RaggaTanks.Tanks
             if (_tankShell.Count > 0)
             {
                 var tankShellModel = TankShellRenderView.GetRenderViewByDirection(_currentDir);
-                /*foreach (var tankShell in _tankShell)
-                {
-
-                    renderer.SetPixel(tankShell.Body.X, tankShell.Body.Y, tankShell.CircleSymbol, 2);
-                }*/
                 foreach (var tankShell in _tankShell)
+                {
+                    renderer.SetPixel(tankShell.Body.X, tankShell.Body.Y, tankShell.CircleSymbol, 4);
+                }
+                /*foreach (var tankShell in _tankShell)
                 {
                     for (int ty = 0; ty < 2; ty++)
                     {
@@ -159,7 +158,7 @@ namespace RaggaTanks.Tanks
                             renderer.SetPixel(tx + tankShell.Body.X, ty + tankShell.Body.Y, tankShellModel[ty, tx], 4);
                         }
                     }
-                }
+                }*/
             }
         }
 

@@ -11,11 +11,10 @@ namespace RaggaTanks.Tanks
     {
         public Tank PlayerTank { get; private set; }
         public List<Tank> Enemies { get; set; } = [];
-        public int Level { get; set; } = 1;
+        public int Level { get; set; }
        
         public string[] currentMap;
 
-        public static MapGenerator _mapGenerator;
         private ShowTextState _showTextState;
         public int fieldWidth { get; set; }
         public int fieldHeight { get; set; }
@@ -24,10 +23,8 @@ namespace RaggaTanks.Tanks
         public bool hasWon = false;
 
         
-        public TanksGameplayState(MapGenerator mapGenerator, ShowTextState showTextState)
+        public TanksGameplayState(ShowTextState showTextState)
         {
-            _mapGenerator = mapGenerator;
-            currentMap = mapGenerator.GetCurrentLevelMap($"level{Level}");
             _showTextState = showTextState;
         }
 

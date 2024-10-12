@@ -16,6 +16,7 @@ namespace RaggaTanks.shared
 
         public abstract void OnArrowUp();
         public abstract void OnPressSpace();
+        public abstract void OnPressN();
         public abstract ConsoleColor[] CreatePallet();
 
         public void InitializeInput(ConsoleInput consoleInput)
@@ -34,11 +35,8 @@ namespace RaggaTanks.shared
             Time += deltaTime;
             ScreenHeight = renderer.Height;
             ScreenWidth = renderer.Width;
-
             CurrentState?.Update(deltaTime);
-
             CurrentState?.Draw(renderer);
-
             Update(deltaTime);
         }
 

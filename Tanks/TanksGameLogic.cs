@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using RaggaTanks.Levels;
 using RaggaTanks.map;
 using RaggaTanks.shared;
 using static RaggaTanks.Tanks.TanksGameplayState;
@@ -13,22 +14,28 @@ namespace RaggaTanks.Tanks
     {
         private TanksGameplayState gameplayState;
         private bool newGamePending = false;
-        private int currentLevel = 0;
         private ShowTextState showTextState = new(2f);
-        
+        private LevelManager _levelManager;
         public TanksGameLogic(MapGenerator mapGenerator)
         {
-            gameplayState = new TanksGameplayState(mapGenerator, showTextState);
-            gameplayState.AddPlayerToGameState(new Tank(gameplayState, new Cell(4, 4), true, "Boris"));
-            gameplayState.AddEnemyToGameState(new Tank(gameplayState, new Cell(16, 10), false, "Chester"));
+            gameplayState = new TanksGameplayState(showTextState);
+
+            List<Level> levels = [
+                new("level1", new Cell(4, 4), [new (44, 4)]),
+                new("level2", new Cell(4, 4), [new (44, 4), new (4, 20)]),
+                new("level3", new Cell(4, 4), [new (44, 4), new (4, 20), new (44, 20)]),
+                new("level4", new Cell(4, 4), [new (44, 4), new (4, 20), new (44, 20), new(16, 6)]),
+            ];
+            _levelManager = new(levels, gameplayState, mapGenerator);
+            _levelManager.LoadLevel();
         }
-        private void GotoNextLevel()
+        /*private void GotoNextLevel()
         {
-            currentLevel++;
+
             newGamePending = false;
-            ChangeState(showTextState);
+            ChangeState(gameplayState);
             showTextState.Text = $"Level {currentLevel}";
-        }
+        }*/
 
         public override void OnArrowUp()
         {
@@ -70,6 +77,12 @@ namespace RaggaTanks.Tanks
             gameplayState.PlayerTank.MoveByDirection();
         }
 
+        public override void OnPressN()
+        {
+            _levelManager.NextLevel();
+            _levelManager.LoadLevel();
+        }
+
         public override void OnPressSpace()
         {
             if (CurrentState != gameplayState)
@@ -86,7 +99,7 @@ namespace RaggaTanks.Tanks
 
         public void GotoGameplay()
         {
-            gameplayState.Level = currentLevel;
+            gameplayState.Level = _levelManager.currentLevel;
             gameplayState.fieldWidth = ScreenWidth;
             gameplayState.fieldHeight = ScreenHeight;
             ChangeState(gameplayState);
@@ -108,7 +121,7 @@ namespace RaggaTanks.Tanks
 
         public void GoToGameOver()
         {
-            currentLevel = 0;
+            _levelManager.ResetLevel();
             showTextState.Text = $"Потрачено!";
             ChangeState(showTextState);
         }
@@ -121,7 +134,7 @@ namespace RaggaTanks.Tanks
             }
             if (CurrentState == null || CurrentState == gameplayState && !gameplayState.gameOver)
             {
-                GotoNextLevel();
+                ChangeState(gameplayState);
             }
             else if (CurrentState == gameplayState && gameplayState.gameOver)
             {
@@ -129,7 +142,7 @@ namespace RaggaTanks.Tanks
             }
             else if (CurrentState != gameplayState && newGamePending)
             {
-                GotoNextLevel();
+                //GotoNextLevel();
             }
             else if (CurrentState != gameplayState && !newGamePending)
             {
