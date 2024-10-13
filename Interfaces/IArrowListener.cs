@@ -8,6 +8,6 @@ namespace RaggaTanks.interfaces
         void OnArrowLeft();
         void OnArrowRight();
         void OnPressSpace();
-        void OnPressN();
+        void OnPressR();
     }
 }

@@ -16,7 +16,7 @@ namespace RaggaTanks.shared
 
         public abstract void OnArrowUp();
         public abstract void OnPressSpace();
-        public abstract void OnPressN();
+        public abstract void OnPressR();
         public abstract ConsoleColor[] CreatePallet();
 
         public void InitializeInput(ConsoleInput consoleInput)
@@ -25,9 +25,9 @@ namespace RaggaTanks.shared
         }
 
         public void ChangeState(BaseGameState? baseGameState)
-        {
-            CurrentState?.Reset();      
+        {      
             CurrentState = baseGameState;
+            CurrentState?.Reset();
         }
 
         public void DrawNewState(float deltaTime, ConsoleRenderer renderer)

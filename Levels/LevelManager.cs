@@ -47,6 +47,5 @@ namespace RaggaTanks.Levels
                 gameplayState.AddEnemyToGameState(new Tank(gameplayState, curLevel.enemySpawn[i], false, $"Bot{i + 1}"));
             }
         }
-
     }
 }

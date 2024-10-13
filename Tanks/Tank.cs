@@ -15,9 +15,9 @@ namespace RaggaTanks.Tanks
         public TankDir CurrentDir => _currentDir;
         private float _timeToMove = 0f;
         public bool IsPlayer { get; private set; }
-        public int Health { get; private set; } = 250;
+        public int Health { get; private set; } = 100;
         public DateTime LastShoot { get; private set; }
-        private int _cdShoot = 3;
+        private int _cdShoot = 2;
 
 
         public Tank(TanksGameplayState gameplayState, Cell startPosition, bool isPlayer, string tankName)
@@ -195,22 +195,11 @@ namespace RaggaTanks.Tanks
                 }
             }
             if (_tankShell.Count > 0)
-            {
-                //var tankShellModel = TankShellRenderView.GetRenderViewByDirection(_currentDir);
+            {                
                 foreach (var tankShell in _tankShell)
                 {
                     renderer.SetPixel(tankShell.Body.X, tankShell.Body.Y, tankShell.CircleSymbol, tankColor);
-                }
-                /*foreach (var tankShell in _tankShell)
-                {
-                    for (int ty = 0; ty < 2; ty++)
-                    {
-                        for (int tx = 0; tx < 2; tx++)
-                        {
-                            renderer.SetPixel(tx + tankShell.Body.X, ty + tankShell.Body.Y, tankShellModel[ty, tx], 4);
-                        }
-                    }
-                }*/
+                }               
             }
         }
 

@@ -102,8 +102,7 @@ namespace RaggaTanks.Tanks
                 for (var x = 0; x < 4; x++)
                 {
                     var nextY = _currentShellDir == TankDir.Up ? nextCell.Y - y : nextCell.Y + y;
-                    var nextX = _currentShellDir == TankDir.Left ? nextCell.X - x : nextCell.X + x;
-                   // nextX = _currentShellDir == TankDir.Up || _currentShellDir == TankDir.Down ? nextX - 1 : nextX;
+                    var nextX = _currentShellDir == TankDir.Left ? nextCell.X - x : nextCell.X + x;                   
                     _state.currentMap[nextY] = _state.currentMap[nextY].Remove(nextX, 1).Insert(nextX, value);
                 }
             }                                

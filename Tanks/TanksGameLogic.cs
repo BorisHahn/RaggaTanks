@@ -24,22 +24,15 @@ namespace RaggaTanks.Tanks
                 new("level1", new Cell(4, 4), [new (44, 4)]),
                 new("level2", new Cell(4, 4), [new (44, 4), new (4, 20)]),
                 new("level3", new Cell(4, 4), [new (44, 4), new (4, 20), new (44, 20)]),
-                new("level4", new Cell(4, 4), [new (44, 4), new (4, 20), new (44, 20), new(16, 6)]),
+                new("level4", new Cell(4, 4), [new (44, 4), new (4, 20), new (44, 20), new(16, 6)]),                
             ];
             _levelManager = new(levels, gameplayState, mapGenerator);
             _levelManager.LoadLevel();
         }
-        /*private void GotoNextLevel()
-        {
-
-            newGamePending = false;
-            ChangeState(gameplayState);
-            showTextState.Text = $"Level {currentLevel}";
-        }*/
 
         public void ChangeLiveGameСycle(TanksGameplayState gameplayState)
         {
-            if (gameplayState.Enemies.Count == 0)
+            if (gameplayState.Enemies.Count == 0 && !gameplayState.gameOver && !gameplayState.hasWon)
             {
                 _levelManager.NextLevel();
                 _levelManager.LoadLevel();
@@ -51,6 +44,10 @@ namespace RaggaTanks.Tanks
             if (gameplayState.PlayerTank.Health <= 0)
             {
                 gameplayState.gameOver = true;
+            }
+            else if (gameplayState.Level == 4 && gameplayState.Enemies.Count == 0)
+            {
+                gameplayState.hasWon = true;
             }
         }
 
@@ -89,15 +86,14 @@ namespace RaggaTanks.Tanks
             if (CurrentState != gameplayState)
             {
                 return;
-            }   
+            }
             gameplayState.PlayerTank.SetDirection(TankDir.Right);
             gameplayState.PlayerTank.MoveByDirection();
         }
 
-        public override void OnPressN()
+        public override void OnPressR()
         {
-            _levelManager.NextLevel();
-            _levelManager.LoadLevel();
+            RestartGame();
         }
 
         public override void OnPressSpace()
@@ -106,14 +102,19 @@ namespace RaggaTanks.Tanks
             {
                 return;
             }
-           gameplayState.PlayerTank.Shoot();
+            gameplayState.PlayerTank.Shoot();
         }
 
+        public void RestartGame()
+        {
+            Console.Clear();
+            ChangeState(gameplayState);
+            _levelManager.ResetLevel();
+            _levelManager.LoadLevel();
+            gameplayState.Reset();
+        }
         public void GotoGameplay()
         {
-            gameplayState.Level = _levelManager.currentLevel;
-            gameplayState.fieldWidth = ScreenWidth;
-            gameplayState.fieldHeight = ScreenHeight;
             ChangeState(gameplayState);
             gameplayState.Reset();
         }
@@ -121,9 +122,9 @@ namespace RaggaTanks.Tanks
         public override ConsoleColor[] CreatePallet()
         {
             return [
-                ConsoleColor.Red, 
-                ConsoleColor.Black, 
-                ConsoleColor.Gray, 
+                ConsoleColor.Red,
+                ConsoleColor.Black,
+                ConsoleColor.Gray,
                 ConsoleColor.Blue,
                 ConsoleColor.Green,
                 ConsoleColor.DarkYellow,
@@ -133,26 +134,32 @@ namespace RaggaTanks.Tanks
 
         public void GoToGameOver()
         {
-            _levelManager.ResetLevel();
-            _levelManager.LoadLevel();
-            gameplayState.gameOver = false;           
+            if (CurrentState != showTextState)
+            {
+                Console.Clear();
+                ChangeState(showTextState);
+                var message = gameplayState.hasWon ? "прошли игру" : "проиграли";
+                var color = gameplayState.hasWon ? ConsoleColor.Green : ConsoleColor.Red;
+                 showTextState.Color = color;
+                 showTextState.Text = $"Вы {message}! Нажмите R - для рестарта";
+            }
         }
 
         public override void Update(float deltaTime)
         {
-            if (CurrentState != null && !gameplayState.gameOver)
+            if (CurrentState != null && !gameplayState.gameOver || !gameplayState.hasWon)
             {
-                ChangeLiveGameСycle(gameplayState);
                 CheckGameOver();
-            }
-            if (CurrentState == null || CurrentState == gameplayState && !gameplayState.gameOver)
-            {
-                ChangeState(gameplayState);
-            }
-            else if (CurrentState == gameplayState && gameplayState.gameOver)
+                ChangeLiveGameСycle(gameplayState);
+            }      
+            if (CurrentState == gameplayState && gameplayState.gameOver || gameplayState.hasWon)
             {
                 GoToGameOver();
             }           
+            if (CurrentState == null && !gameplayState.gameOver && !gameplayState.hasWon)
+            {
+                ChangeState(gameplayState);
+            }
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+﻿
 namespace RaggaTanks.map
 {
     public class MapGenerator

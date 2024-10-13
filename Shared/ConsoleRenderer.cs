@@ -50,8 +50,7 @@ namespace RaggaTanks.shared
 
 
         public void Render()
-        {
-            //Console.Clear();
+        {            
             Console.BackgroundColor = BgColor;
 
             for (var w = 0; w < Width; w++)
