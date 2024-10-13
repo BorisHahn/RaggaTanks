@@ -1,4 +1,4 @@
-﻿
+﻿using System.Collections.Generic;
 namespace RaggaTanks.map
 {
     public class MapGenerator
@@ -27,7 +27,10 @@ namespace RaggaTanks.map
 
         public string[] GetCurrentLevelMap(string levelName)
         {
-            return _mapsCollection[levelName];
+            string[] map = _mapsCollection[levelName];
+            string[] mapNew = new string[map.Length];
+            Array.Copy(map, mapNew, map.Length);
+            return mapNew;
         }
 
         private void AddToMapsCollection(string mapKey, string[] mapValue)

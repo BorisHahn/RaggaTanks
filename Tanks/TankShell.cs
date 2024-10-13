@@ -10,14 +10,14 @@ namespace RaggaTanks.Tanks
         private Cell _body;
         private TankDir _currentShellDir;
         private TanksGameplayState _state;
-        private int _index;
+        private Guid _index;
         private Tank _tankOwner;
-        public int Index {  get { return _index; } }
+        public Guid Index {  get { return _index; } }
         public char CircleSymbol => circleSymbol;
         public Cell Body => _body;
         public int Damage { get; private set; } = 50;
 
-        public TankShell(TankDir currentTankDirection, Cell currentTankPosition, TanksGameplayState state, int index, Tank tankOwner)
+        public TankShell(TankDir currentTankDirection, Cell currentTankPosition, TanksGameplayState state, Guid index, Tank tankOwner)
         {
             _currentShellDir = currentTankDirection;
             switch (currentTankDirection)
@@ -60,17 +60,21 @@ namespace RaggaTanks.Tanks
         {
             var nextCell = ShiftTo(_body, _currentShellDir);
             MapGenerator mapGenerator = new MapGenerator();
-
-            var mapValueByNextCell = _state.currentMap[nextCell.Y][nextCell.X];
             
+            var mapValueByNextCell = _state.GetMapValueByNextCell(nextCell);
+
             if (mapValueByNextCell == ' ' || mapValueByNextCell == '█')
             {
-                var filteredCoords = _state.Enemies.Where((el) => el.TankPosition.X == nextCell.X && el.TankPosition.Y == nextCell.Y).ToList();
+                var targets = _tankOwner.IsPlayer ? _state.Enemies : new List<Tank>() { _state.PlayerTank };
+                var filteredCoords = targets.Where((el) => 
+                    el.TankPosition.X == nextCell.X && el.TankPosition.Y == nextCell.Y ||
+                    el.TankPosition.X == _body.X && el.TankPosition.Y == _body.Y
+                ).ToList();
                 if (filteredCoords.Count > 0)
                 {
                     
                     CauseDamageToTank(filteredCoords);
-                    _state.PlayerTank.RemoveTankShellFromList(this);
+                    _tankOwner.RemoveTankShellFromList(this);
                 }
                 else
                 {
@@ -87,7 +91,7 @@ namespace RaggaTanks.Tanks
             }
             else
             {
-                _state.PlayerTank.RemoveTankShellFromList(this);
+                _tankOwner.RemoveTankShellFromList(this);
             }
         }
 
@@ -99,18 +103,16 @@ namespace RaggaTanks.Tanks
                 {
                     var nextY = _currentShellDir == TankDir.Up ? nextCell.Y - y : nextCell.Y + y;
                     var nextX = _currentShellDir == TankDir.Left ? nextCell.X - x : nextCell.X + x;
+                   // nextX = _currentShellDir == TankDir.Up || _currentShellDir == TankDir.Down ? nextX - 1 : nextX;
                     _state.currentMap[nextY] = _state.currentMap[nextY].Remove(nextX, 1).Insert(nextX, value);
                 }
             }                                
-            _state.PlayerTank.RemoveTankShellFromList(this);
+            _tankOwner.RemoveTankShellFromList(this);
         }
 
         private void CauseDamageToTank(List<Tank> filteredCoords)
-        {
-            if (_tankOwner.IsPlayer)
-            {
-               filteredCoords[0].GetDamage(this);
-            }
+        {            
+            filteredCoords[0].GetDamage(this);       
         }
     }
 }

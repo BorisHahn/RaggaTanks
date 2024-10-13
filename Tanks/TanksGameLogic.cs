@@ -37,6 +37,23 @@ namespace RaggaTanks.Tanks
             showTextState.Text = $"Level {currentLevel}";
         }*/
 
+        public void ChangeLiveGameСycle(TanksGameplayState gameplayState)
+        {
+            if (gameplayState.Enemies.Count == 0)
+            {
+                _levelManager.NextLevel();
+                _levelManager.LoadLevel();
+            }
+        }
+
+        public void CheckGameOver()
+        {
+            if (gameplayState.PlayerTank.Health <= 0)
+            {
+                gameplayState.gameOver = true;
+            }
+        }
+
         public override void OnArrowUp()
         {
             if (CurrentState != gameplayState)
@@ -89,12 +106,7 @@ namespace RaggaTanks.Tanks
             {
                 return;
             }
-            Random rnd = new Random();
-            int index = rnd.Next(100);
-            var currTankPos = gameplayState.PlayerTank.TankPosition;
-            var currTankDir = gameplayState.PlayerTank.CurrentDir;
-            TankShell tankShell = new(currTankDir, currTankPos, gameplayState, index, gameplayState.PlayerTank);
-            gameplayState.PlayerTank.AddTankShellToList(tankShell);
+           gameplayState.PlayerTank.Shoot();
         }
 
         public void GotoGameplay()
@@ -122,15 +134,16 @@ namespace RaggaTanks.Tanks
         public void GoToGameOver()
         {
             _levelManager.ResetLevel();
-            showTextState.Text = $"Потрачено!";
-            ChangeState(showTextState);
+            _levelManager.LoadLevel();
+            gameplayState.gameOver = false;           
         }
 
         public override void Update(float deltaTime)
         {
-            if (CurrentState != null && !CurrentState.IsDone())
+            if (CurrentState != null && !gameplayState.gameOver)
             {
-                return;
+                ChangeLiveGameСycle(gameplayState);
+                CheckGameOver();
             }
             if (CurrentState == null || CurrentState == gameplayState && !gameplayState.gameOver)
             {
@@ -139,15 +152,7 @@ namespace RaggaTanks.Tanks
             else if (CurrentState == gameplayState && gameplayState.gameOver)
             {
                 GoToGameOver();
-            }
-            else if (CurrentState != gameplayState && newGamePending)
-            {
-                //GotoNextLevel();
-            }
-            else if (CurrentState != gameplayState && !newGamePending)
-            {
-                GotoGameplay();
-            }
+            }           
         }
     }
 }

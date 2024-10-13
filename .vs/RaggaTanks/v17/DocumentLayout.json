@@ -3,24 +3,52 @@
   "WorkspaceRootPath": "E:\\dev\\C#\\RaggaTanks\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{55D237E2-0F9A-41CA-AD7B-5C6B4F686566}|RaggaTanks.csproj|e:\\dev\\c#\\raggatanks\\tanks\\tankshell.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{55D237E2-0F9A-41CA-AD7B-5C6B4F686566}|RaggaTanks.csproj|solutionrelative:tanks\\tankshell.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{55D237E2-0F9A-41CA-AD7B-5C6B4F686566}|RaggaTanks.csproj|e:\\dev\\c#\\raggatanks\\tanks\\tank.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{55D237E2-0F9A-41CA-AD7B-5C6B4F686566}|RaggaTanks.csproj|solutionrelative:tanks\\tank.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{55D237E2-0F9A-41CA-AD7B-5C6B4F686566}|RaggaTanks.csproj|e:\\dev\\c#\\raggatanks\\tanks\\tankshellrenderview.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{55D237E2-0F9A-41CA-AD7B-5C6B4F686566}|RaggaTanks.csproj|solutionrelative:tanks\\tankshellrenderview.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{55D237E2-0F9A-41CA-AD7B-5C6B4F686566}|RaggaTanks.csproj|e:\\dev\\c#\\raggatanks\\map\\mapgenerator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{55D237E2-0F9A-41CA-AD7B-5C6B4F686566}|RaggaTanks.csproj|solutionrelative:map\\mapgenerator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{55D237E2-0F9A-41CA-AD7B-5C6B4F686566}|RaggaTanks.csproj|e:\\dev\\c#\\raggatanks\\levels\\levelmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{55D237E2-0F9A-41CA-AD7B-5C6B4F686566}|RaggaTanks.csproj|solutionrelative:levels\\levelmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{55D237E2-0F9A-41CA-AD7B-5C6B4F686566}|RaggaTanks.csproj|e:\\dev\\c#\\raggatanks\\map\\mapfiles\\level1.txt||{8B382828-6202-11D1-8870-0000F87579D2}",
       "RelativeMoniker": "D:0:0:{55D237E2-0F9A-41CA-AD7B-5C6B4F686566}|RaggaTanks.csproj|solutionrelative:map\\mapfiles\\level1.txt||{8B382828-6202-11D1-8870-0000F87579D2}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{55D237E2-0F9A-41CA-AD7B-5C6B4F686566}|RaggaTanks.csproj|e:\\dev\\c#\\raggatanks\\tanks\\tanksgameplaystate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{55D237E2-0F9A-41CA-AD7B-5C6B4F686566}|RaggaTanks.csproj|solutionrelative:tanks\\tanksgameplaystate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{55D237E2-0F9A-41CA-AD7B-5C6B4F686566}|RaggaTanks.csproj|e:\\dev\\c#\\raggatanks\\tanks\\tanksgamelogic.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{55D237E2-0F9A-41CA-AD7B-5C6B4F686566}|RaggaTanks.csproj|solutionrelative:tanks\\tanksgamelogic.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{55D237E2-0F9A-41CA-AD7B-5C6B4F686566}|RaggaTanks.csproj|e:\\dev\\c#\\raggatanks\\shared\\basegamelogic.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{55D237E2-0F9A-41CA-AD7B-5C6B4F686566}|RaggaTanks.csproj|solutionrelative:shared\\basegamelogic.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{55D237E2-0F9A-41CA-AD7B-5C6B4F686566}|RaggaTanks.csproj|e:\\dev\\c#\\raggatanks\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{55D237E2-0F9A-41CA-AD7B-5C6B4F686566}|RaggaTanks.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{55D237E2-0F9A-41CA-AD7B-5C6B4F686566}|RaggaTanks.csproj|e:\\dev\\c#\\raggatanks\\tanks\\tankshell.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{55D237E2-0F9A-41CA-AD7B-5C6B4F686566}|RaggaTanks.csproj|solutionrelative:tanks\\tankshell.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{55D237E2-0F9A-41CA-AD7B-5C6B4F686566}|RaggaTanks.csproj|e:\\dev\\c#\\raggatanks\\tanks\\tankshellrenderview.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{55D237E2-0F9A-41CA-AD7B-5C6B4F686566}|RaggaTanks.csproj|solutionrelative:tanks\\tankshellrenderview.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{55D237E2-0F9A-41CA-AD7B-5C6B4F686566}|RaggaTanks.csproj|e:\\dev\\c#\\raggatanks\\tanks\\tankrenderview.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{55D237E2-0F9A-41CA-AD7B-5C6B4F686566}|RaggaTanks.csproj|solutionrelative:tanks\\tankrenderview.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{55D237E2-0F9A-41CA-AD7B-5C6B4F686566}|RaggaTanks.csproj|e:\\dev\\c#\\raggatanks\\shared\\basegamestate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{55D237E2-0F9A-41CA-AD7B-5C6B4F686566}|RaggaTanks.csproj|solutionrelative:shared\\basegamestate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{55D237E2-0F9A-41CA-AD7B-5C6B4F686566}|RaggaTanks.csproj|e:\\dev\\c#\\raggatanks\\map\\mapfiles\\level2.txt||{8B382828-6202-11D1-8870-0000F87579D2}",
@@ -33,30 +61,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{55D237E2-0F9A-41CA-AD7B-5C6B4F686566}|RaggaTanks.csproj|e:\\dev\\c#\\raggatanks\\map\\mapfiles\\level4.txt||{8B382828-6202-11D1-8870-0000F87579D2}",
       "RelativeMoniker": "D:0:0:{55D237E2-0F9A-41CA-AD7B-5C6B4F686566}|RaggaTanks.csproj|solutionrelative:map\\mapfiles\\level4.txt||{8B382828-6202-11D1-8870-0000F87579D2}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{55D237E2-0F9A-41CA-AD7B-5C6B4F686566}|RaggaTanks.csproj|e:\\dev\\c#\\raggatanks\\tanks\\tanksgamelogic.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{55D237E2-0F9A-41CA-AD7B-5C6B4F686566}|RaggaTanks.csproj|solutionrelative:tanks\\tanksgamelogic.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{55D237E2-0F9A-41CA-AD7B-5C6B4F686566}|RaggaTanks.csproj|e:\\dev\\c#\\raggatanks\\shared\\basegamelogic.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{55D237E2-0F9A-41CA-AD7B-5C6B4F686566}|RaggaTanks.csproj|solutionrelative:shared\\basegamelogic.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{55D237E2-0F9A-41CA-AD7B-5C6B4F686566}|RaggaTanks.csproj|e:\\dev\\c#\\raggatanks\\shared\\basegamestate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{55D237E2-0F9A-41CA-AD7B-5C6B4F686566}|RaggaTanks.csproj|solutionrelative:shared\\basegamestate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{55D237E2-0F9A-41CA-AD7B-5C6B4F686566}|RaggaTanks.csproj|e:\\dev\\c#\\raggatanks\\tanks\\tanksgameplaystate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{55D237E2-0F9A-41CA-AD7B-5C6B4F686566}|RaggaTanks.csproj|solutionrelative:tanks\\tanksgameplaystate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{55D237E2-0F9A-41CA-AD7B-5C6B4F686566}|RaggaTanks.csproj|e:\\dev\\c#\\raggatanks\\levels\\levelmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{55D237E2-0F9A-41CA-AD7B-5C6B4F686566}|RaggaTanks.csproj|solutionrelative:levels\\levelmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{55D237E2-0F9A-41CA-AD7B-5C6B4F686566}|RaggaTanks.csproj|e:\\dev\\c#\\raggatanks\\tanks\\tankrenderview.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{55D237E2-0F9A-41CA-AD7B-5C6B4F686566}|RaggaTanks.csproj|solutionrelative:tanks\\tankrenderview.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{55D237E2-0F9A-41CA-AD7B-5C6B4F686566}|RaggaTanks.csproj|e:\\dev\\c#\\raggatanks\\shared\\consolerenderer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -75,10 +79,6 @@
       "RelativeMoniker": "D:0:0:{55D237E2-0F9A-41CA-AD7B-5C6B4F686566}|RaggaTanks.csproj|solutionrelative:levels\\level.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{55D237E2-0F9A-41CA-AD7B-5C6B4F686566}|RaggaTanks.csproj|e:\\dev\\c#\\raggatanks\\map\\mapgenerator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{55D237E2-0F9A-41CA-AD7B-5C6B4F686566}|RaggaTanks.csproj|solutionrelative:map\\mapgenerator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{55D237E2-0F9A-41CA-AD7B-5C6B4F686566}|RaggaTanks.csproj|e:\\dev\\c#\\raggatanks\\raggatanks.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
       "RelativeMoniker": "D:0:0:{55D237E2-0F9A-41CA-AD7B-5C6B4F686566}|RaggaTanks.csproj|solutionrelative:raggatanks.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
     },
@@ -94,7 +94,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 21,
+          "SelectedChildIndex": 22,
           "Children": [
             {
               "$type": "Bookmark",
@@ -112,14 +112,13 @@
               "RelativeDocumentMoniker": "Map\\mapFiles\\level1.txt",
               "ToolTip": "E:\\dev\\C#\\RaggaTanks\\Map\\mapFiles\\level1.txt",
               "RelativeToolTip": "Map\\mapFiles\\level1.txt",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAsAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAgAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003109|",
-              "WhenOpened": "2024-10-11T23:07:36.992Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-11T23:07:36.992Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 12,
               "Title": "level2.txt",
               "DocumentMoniker": "E:\\dev\\C#\\RaggaTanks\\Map\\mapFiles\\level2.txt",
               "RelativeDocumentMoniker": "Map\\mapFiles\\level2.txt",
@@ -127,12 +126,11 @@
               "RelativeToolTip": "Map\\mapFiles\\level2.txt",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003109|",
-              "WhenOpened": "2024-10-11T23:02:34.749Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-11T23:02:34.749Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 13,
               "Title": "level3.txt",
               "DocumentMoniker": "E:\\dev\\C#\\RaggaTanks\\Map\\mapFiles\\level3.txt",
               "RelativeDocumentMoniker": "Map\\mapFiles\\level3.txt",
@@ -140,12 +138,11 @@
               "RelativeToolTip": "Map\\mapFiles\\level3.txt",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003109|",
-              "WhenOpened": "2024-10-11T23:02:25.893Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-11T23:02:25.893Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 14,
               "Title": "level4.txt",
               "DocumentMoniker": "E:\\dev\\C#\\RaggaTanks\\Map\\mapFiles\\level4.txt",
               "RelativeDocumentMoniker": "Map\\mapFiles\\level4.txt",
@@ -153,12 +150,11 @@
               "RelativeToolTip": "Map\\mapFiles\\level4.txt",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003109|",
-              "WhenOpened": "2024-10-11T23:00:52.937Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-11T23:00:52.937Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 16,
               "Title": "IArrowListener.cs",
               "DocumentMoniker": "E:\\dev\\C#\\RaggaTanks\\Interfaces\\IArrowListener.cs",
               "RelativeDocumentMoniker": "Interfaces\\IArrowListener.cs",
@@ -166,12 +162,11 @@
               "RelativeToolTip": "Interfaces\\IArrowListener.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAqwAsAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-11T22:24:52.81Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-11T22:24:52.81Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 17,
               "Title": "ConsoleInput.cs",
               "DocumentMoniker": "E:\\dev\\C#\\RaggaTanks\\Shared\\ConsoleInput.cs",
               "RelativeDocumentMoniker": "Shared\\ConsoleInput.cs",
@@ -179,38 +174,36 @@
               "RelativeToolTip": "Shared\\ConsoleInput.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAlAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-11T21:09:14.942Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-11T21:09:14.942Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 18,
+              "DocumentIndex": 1,
               "Title": "MapGenerator.cs",
               "DocumentMoniker": "E:\\dev\\C#\\RaggaTanks\\Map\\MapGenerator.cs",
               "RelativeDocumentMoniker": "Map\\MapGenerator.cs",
               "ToolTip": "E:\\dev\\C#\\RaggaTanks\\Map\\MapGenerator.cs",
               "RelativeToolTip": "Map\\MapGenerator.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAwAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-10-11T20:43:21.153Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 2,
               "Title": "LevelManager.cs",
               "DocumentMoniker": "E:\\dev\\C#\\RaggaTanks\\Levels\\LevelManager.cs",
               "RelativeDocumentMoniker": "Levels\\LevelManager.cs",
               "ToolTip": "E:\\dev\\C#\\RaggaTanks\\Levels\\LevelManager.cs",
               "RelativeToolTip": "Levels\\LevelManager.cs",
-              "ViewState": "AgIAAAsAAAAAAAAAAAAgwC4AAAB0AAAAAAAAAA==",
+              "ViewState": "AgIAAA0AAAAAAAAAAAA1wCMAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-11T20:32:42.765Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-11T20:32:42.765Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 18,
               "Title": "Level.cs",
               "DocumentMoniker": "E:\\dev\\C#\\RaggaTanks\\Levels\\Level.cs",
               "RelativeDocumentMoniker": "Levels\\Level.cs",
@@ -218,38 +211,35 @@
               "RelativeToolTip": "Levels\\Level.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-11T20:24:38.209Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-11T20:24:38.209Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 19,
-              "Title": "RaggaTanks",
+              "Title": "RaggaTanks.csproj",
               "DocumentMoniker": "E:\\dev\\C#\\RaggaTanks\\RaggaTanks.csproj",
               "RelativeDocumentMoniker": "RaggaTanks.csproj",
               "ToolTip": "E:\\dev\\C#\\RaggaTanks\\RaggaTanks.csproj",
               "RelativeToolTip": "RaggaTanks.csproj",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2024-10-11T20:24:16.372Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-11T20:24:16.372Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 10,
               "Title": "TankRenderView.cs",
               "DocumentMoniker": "E:\\dev\\C#\\RaggaTanks\\Tanks\\TankRenderView.cs",
               "RelativeDocumentMoniker": "Tanks\\TankRenderView.cs",
               "ToolTip": "E:\\dev\\C#\\RaggaTanks\\Tanks\\TankRenderView.cs",
               "RelativeToolTip": "Tanks\\TankRenderView.cs",
-              "ViewState": "AgIAAAsAAAAAAAAAAAAQwCgAAAAhAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABkAAAAiAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-11T20:14:54.388Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-11T20:14:54.388Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 6,
               "Title": "BaseGameLogic.cs",
               "DocumentMoniker": "E:\\dev\\C#\\RaggaTanks\\Shared\\BaseGameLogic.cs",
               "RelativeDocumentMoniker": "Shared\\BaseGameLogic.cs",
@@ -257,8 +247,7 @@
               "RelativeToolTip": "Shared\\BaseGameLogic.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAoAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-11T12:27:05.418Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-11T12:27:05.418Z"
             },
             {
               "$type": "Document",
@@ -270,25 +259,23 @@
               "RelativeToolTip": "Shared\\ShowTextState.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAACAAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-11T11:48:09.72Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-11T11:48:09.72Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 4,
               "Title": "TanksGameplayState.cs",
               "DocumentMoniker": "E:\\dev\\C#\\RaggaTanks\\Tanks\\TanksGameplayState.cs",
               "RelativeDocumentMoniker": "Tanks\\TanksGameplayState.cs",
               "ToolTip": "E:\\dev\\C#\\RaggaTanks\\Tanks\\TanksGameplayState.cs",
               "RelativeToolTip": "Tanks\\TanksGameplayState.cs",
-              "ViewState": "AgIAABgAAAAAAAAAAAAmwCUAAAAMAAAAAAAAAA==",
+              "ViewState": "AgIAAEsAAAAAAAAAAAAiwGIAAABpAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-11T11:46:10.316Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-11T11:46:10.316Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 7,
               "Title": "Program.cs",
               "DocumentMoniker": "E:\\dev\\C#\\RaggaTanks\\Program.cs",
               "RelativeDocumentMoniker": "Program.cs",
@@ -296,25 +283,23 @@
               "RelativeToolTip": "Program.cs",
               "ViewState": "AgIAAAYAAAAAAAAAAAAAAB0AAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-11T11:37:09.832Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-11T11:37:09.832Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 5,
               "Title": "TanksGameLogic.cs",
               "DocumentMoniker": "E:\\dev\\C#\\RaggaTanks\\Tanks\\TanksGameLogic.cs",
               "RelativeDocumentMoniker": "Tanks\\TanksGameLogic.cs",
               "ToolTip": "E:\\dev\\C#\\RaggaTanks\\Tanks\\TanksGameLogic.cs",
               "RelativeToolTip": "Tanks\\TanksGameLogic.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABoAAABgAAAAAAAAAA==",
+              "ViewState": "AgIAAHUAAAAAAAAAAAAqwIcAAAAnAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-11T11:36:20.7Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-11T11:36:20.7Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 9,
               "Title": "TankShellRenderView.cs",
               "DocumentMoniker": "E:\\dev\\C#\\RaggaTanks\\Tanks\\TankShellRenderView.cs",
               "RelativeDocumentMoniker": "Tanks\\TankShellRenderView.cs",
@@ -322,25 +307,23 @@
               "RelativeToolTip": "Tanks\\TankShellRenderView.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABsAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-11T10:50:29.381Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-11T10:50:29.381Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 11,
               "Title": "BaseGameState.cs",
               "DocumentMoniker": "E:\\dev\\C#\\RaggaTanks\\Shared\\BaseGameState.cs",
               "RelativeDocumentMoniker": "Shared\\BaseGameState.cs",
               "ToolTip": "E:\\dev\\C#\\RaggaTanks\\Shared\\BaseGameState.cs",
               "RelativeToolTip": "Shared\\BaseGameState.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAA6AAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAaAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-11T12:00:49.449Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-11T12:00:49.449Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 15,
               "Title": "ConsoleRenderer.cs",
               "DocumentMoniker": "E:\\dev\\C#\\RaggaTanks\\Shared\\ConsoleRenderer.cs",
               "RelativeDocumentMoniker": "Shared\\ConsoleRenderer.cs",
@@ -348,31 +331,29 @@
               "RelativeToolTip": "Shared\\ConsoleRenderer.cs",
               "ViewState": "AgIAACgAAAAAAAAAAAAcwDMAAAAaAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-11T12:04:38.499Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-11T12:04:38.499Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 8,
               "Title": "TankShell.cs",
               "DocumentMoniker": "E:\\dev\\C#\\RaggaTanks\\Tanks\\TankShell.cs",
               "RelativeDocumentMoniker": "Tanks\\TankShell.cs",
               "ToolTip": "E:\\dev\\C#\\RaggaTanks\\Tanks\\TankShell.cs",
               "RelativeToolTip": "Tanks\\TankShell.cs",
-              "ViewState": "AgIAAEEAAAAAAAAAAAAuwFEAAAAoAAAAAAAAAA==",
+              "ViewState": "AgIAAFgAAAAAAAAAAAAowHIAAAAnAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-11T10:45:23.256Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-11T10:45:23.256Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "Tank.cs",
               "DocumentMoniker": "E:\\dev\\C#\\RaggaTanks\\Tanks\\Tank.cs",
               "RelativeDocumentMoniker": "Tanks\\Tank.cs",
               "ToolTip": "E:\\dev\\C#\\RaggaTanks\\Tanks\\Tank.cs",
               "RelativeToolTip": "Tanks\\Tank.cs",
-              "ViewState": "AgIAAIUAAAAAAAAAAAAUwJQAAAARAAAAAAAAAA==",
+              "ViewState": "AgIAAGUAAAAAAAAAAADwv2wAAAAhAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-10-11T10:45:26.737Z",
               "EditorCaption": ""

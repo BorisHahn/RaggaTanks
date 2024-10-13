@@ -16,6 +16,9 @@ namespace RaggaTanks.Tanks
         private float _timeToMove = 0f;
         public bool IsPlayer { get; private set; }
         public int Health { get; private set; } = 250;
+        public DateTime LastShoot { get; private set; }
+        private int _cdShoot = 3;
+
 
         public Tank(TanksGameplayState gameplayState, Cell startPosition, bool isPlayer, string tankName)
         {
@@ -43,8 +46,9 @@ namespace RaggaTanks.Tanks
 
         public void MoveByDirection()
         {
-            var newPosition = ShiftTo(_tankPosition, _currentDir);
-            var mapValueByNextCell = _gameplayState.currentMap[newPosition.Y][newPosition.X];
+            var newPosition = ShiftTo(_tankPosition, _currentDir);        
+            var mapValueByNextCell = _gameplayState.GetMapValueByNextCell(newPosition);
+
             if (mapValueByNextCell == ' ')
             {
                 if (IsPlayer)
@@ -74,13 +78,59 @@ namespace RaggaTanks.Tanks
             }
         }
 
-        private void ChangeTankDirection()
+        public bool CheckEnemyByCurrentDirection()
         {
-            int currentIndexDirection = (int)CurrentDir;
+            Cell step;
+            switch (_currentDir)
+            {
+                case TankDir.Up:
+                    step = new(0, -1);
+                    break;
+                case TankDir.Right:
+                    step = new(1, 0);
+                    break;
+                case TankDir.Down:
+                    step = new(0, 1);
+                    break;
+                case TankDir.Left:
+                    step = new(-1, 0);
+                    break;
+                default:
+                    return false;
+            }
+            var pos = _tankPosition;
+            do
+            {
+                pos.X += step.X;
+                pos.Y += step.Y;
+                var element = _gameplayState.GetMapValueByNextCell(pos);
 
-            var tankDirMemberCount = Enum.GetNames(typeof(TankDir)).Length - 1;
+                if (element == null || element == '▓' || element == '░')
+                    return false;
+                if (_gameplayState.PlayerTank.TankPosition.X == pos.X &&
+                   _gameplayState.PlayerTank.TankPosition.Y == pos.Y)
+                    return true;
+            }
+            while (true);
+        }
+
+        public void Shoot()
+        {
+            if (DateTime.Now.Ticks - LastShoot.Ticks < TimeSpan.FromSeconds(_cdShoot).Ticks) return;
+            Random rnd = new Random();
+            int index = rnd.Next(100);
+            var guid = System.Guid.NewGuid();            
+            TankShell tankShell = new(_currentDir, _tankPosition, _gameplayState, guid, this);
+            AddTankShellToList(tankShell);
+            LastShoot = DateTime.Now;
+            Console.Beep();
+        }
+
+        private void ChangeTankDirection()
+        {            
+            var tankDirMemberCount = Enum.GetNames(typeof(TankDir)).Length;
             Random random = new Random();
-            var newIndex = random.Next(0, 3);
+            var newIndex = random.Next(0, tankDirMemberCount);
             var tankDirValues = Enum.GetValues<TankDir>();
             for (int i = 0; i < tankDirValues.Length; i++)
             {
@@ -111,43 +161,45 @@ namespace RaggaTanks.Tanks
 
         public void Update(float deltaTime)
         {
-            _timeToMove -= deltaTime;
-            if (_timeToMove > 0f || _gameplayState.gameOver)
-                return;
 
-            _timeToMove = IsPlayer ? (1f / 10): 1f;
-            
+            if (_gameplayState.gameOver)
+                return;
+            foreach (var tankShell in _tankShell)
+            {
+                tankShell.Update(deltaTime);
+            }
             if (!IsPlayer)
             {
-                MoveByDirection();
-            }
-            if (_tankShell.Count == 0) return;
-            if (_tankShell.Count > 0)
-            {
-                foreach (var tankShell in _tankShell)
-                {
-                    tankShell.Update(deltaTime);
-                }
-            }
+                _timeToMove -= deltaTime;
+                if (_timeToMove > 0f)
+                    return;
+
+                _timeToMove = 1f;
+
+                if (CheckEnemyByCurrentDirection())                
+                    Shoot();                
+                else
+                    MoveByDirection();                
+            }                       
         }
 
         public void DrawTank(ConsoleRenderer renderer)
         {
+            var tankColor = (byte)(IsPlayer ? 4 : 2);
             var tankModel = TankRenderView.GetRenderViewByDirection(_currentDir);
             for (int ty = 0; ty < 2; ty++)
             {
                 for (int tx = 0; tx < 4; tx++)
-                {
-                    var tankColor = (byte)(IsPlayer ? 4 : 2);
+                {                    
                     renderer.SetPixel(tx + _tankPosition.X, ty + _tankPosition.Y, tankModel[ty, tx], tankColor);
                 }
             }
             if (_tankShell.Count > 0)
             {
-                var tankShellModel = TankShellRenderView.GetRenderViewByDirection(_currentDir);
+                //var tankShellModel = TankShellRenderView.GetRenderViewByDirection(_currentDir);
                 foreach (var tankShell in _tankShell)
                 {
-                    renderer.SetPixel(tankShell.Body.X, tankShell.Body.Y, tankShell.CircleSymbol, 4);
+                    renderer.SetPixel(tankShell.Body.X, tankShell.Body.Y, tankShell.CircleSymbol, tankColor);
                 }
                 /*foreach (var tankShell in _tankShell)
                 {

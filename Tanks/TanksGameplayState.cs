@@ -1,4 +1,5 @@
-﻿using RaggaTanks.map;
+﻿using RaggaTanks.Levels;
+using RaggaTanks.map;
 using RaggaTanks.shared;
 
 namespace RaggaTanks.Tanks
@@ -52,7 +53,6 @@ namespace RaggaTanks.Tanks
 
         public override void Update(float deltaTime)
         {
-            CheckGameOver();
             PlayerTank.Update(deltaTime);
             foreach (var enemy in Enemies)
             {
@@ -60,14 +60,11 @@ namespace RaggaTanks.Tanks
             }
         }
 
-        public void CheckGameOver()
+        public char? GetMapValueByNextCell(Cell position)
         {
-            if (Enemies.Count == 0)
-            {
-                gameOver = true;
-            }
+            if (position.X >= currentMap[0].Length || position.Y >= currentMap.Length || position.X < 0 || position.Y < 0) return null;
+            return currentMap[position.Y][position.X];
         }
-
         public override void Draw(ConsoleRenderer renderer)
         {        
             for (int y = 0; y < Math.Min(currentMap.Length, renderer.Height); y++)
@@ -99,7 +96,7 @@ namespace RaggaTanks.Tanks
 
         public void ShowGameStateInfo(ConsoleRenderer renderer)
         {
-            _showTextState.DrawText(renderer, 0, 60, ConsoleColor.Green, $"Player: {PlayerTank.Health}HP");
+            _showTextState.DrawText(renderer, 0, 60, ConsoleColor.Green, $"Player: {PlayerTank.Health}HP ");
             _showTextState.DrawText(renderer, 1, 60, ConsoleColor.DarkYellow, $"Level: {Level}");
             _showTextState.DrawText(renderer, 2, 60, ConsoleColor.Magenta, $"Enemies: {Enemies.Count}");
         }
